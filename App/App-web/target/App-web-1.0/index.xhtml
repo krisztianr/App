@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p><h:link value="Add New Person " outcome="addperson"></h:link></p>
+            <p><h:link value=" Add New App" outcome="addapp"></h:link> </p>   
+            <p><b>Person Table</b></p>
+            <h:dataTable var="p" value="#{personController.findAll()}" border="1" cellpadding="2" cellspacing="2">
+                <h:column>
+                    <f:facet name="header">PersonID</f:facet>
+                    <h:outputText value="#{p.personid}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Name</f:facet>
+                    <h:outputText value="#{p.personname}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Gender</f:facet>
+                    <h:outputText value="#{p.gender}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Role</f:facet>
+                    <h:outputText value="#{p.familyrole}"></h:outputText>
+                </h:column>   
+                <h:column>
+                    <f:facet name="header">APPS</f:facet>
+                    <h:outputText value="#{personController.appName(p)}"></h:outputText>
+                </h:column>     
+                <h:column>
+                    <f:facet name="header">Option</f:facet>
+                    <h:commandLink value="Delete" action ="#{personController.delete(p)}" onclick="return confirm('Are you sure?')"></h:commandLink>
+                </h:column>                 
+            </h:dataTable>
+            <p><b>Application Table</b></p>
+            
+            <h:dataTable var="a" value="#{appController.findAll()}" border="1" cellpadding="2" cellspacing="2">
+                <h:column>
+                    <f:facet name="header">AppID</f:facet>
+                    <h:outputText value="#{a.appid}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">AppName</f:facet>
+                    <h:outputText value="#{a.appname}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Size in MB</f:facet>
+                    <h:outputText value="#{a.appsize}"></h:outputText>
+                </h:column>  
+                <h:column>
+                    <f:facet name="header">Persons</f:facet>
+                    <h:outputText value="#{appController.personName(a)}"></h:outputText>
+                </h:column>                  
+            </h:dataTable>
+        </h:form>        
+    </h:body>
+</html>
+

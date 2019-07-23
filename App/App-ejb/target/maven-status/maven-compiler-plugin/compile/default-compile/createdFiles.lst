@@ -1,0 +1,7 @@
+entities\Apps.class
+entities\Persons.class
+model\PersonsFacade.class
+entities\Apps_.class
+model\AppsFacade.class
+entities\Persons_.class
+model\AbstractFacade.class
